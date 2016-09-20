@@ -4,7 +4,7 @@ from RequestsLogging import write_log, write_stream_logs
 from robot.api import logger
 
 """
-Library for sending different type of requests.
+Library for sending different type of requests tp specified service.
 """
 
 class HttpBinLib:
@@ -46,17 +46,21 @@ class HttpBinLib:
         write_log(response)
         return response
 
-    def send_auth_request(self, url_login, entered_login, entered_password):
+    def send_auth_request(self, url_login_pass, entered_login, entered_password):
         """
-                Получение http-ответа на auth запрос.\n\n
+            Получение http-ответа на auth запрос.\n\n
 
-                *Args:*\n
-                _url_login_ - имя пользователя и пароль которые передаются в url (строка в формате :usr/:password)\n\n
-                _entered_login_ - вводимый пользователь\n\n
-                _entered_password_ - вводимый пароль\n\n
+            *Args:*\n
+            _url_login_ - имя пользователя и пароль которые передаются в url (строка в формате :usr/:password)\n\n
+            _entered_login_ - вводимый пользователь\n\n
+            _entered_password_ - вводимый пароль\n\n
+
+            *Examples*:\n
+            |  *Action*             | *Argument*    | *Argument*    | *Argument*    |
+            |  Send auth request    | user/pass     | user          | pass          |
 
         """
-        full_url = "{url}/basic-auth/{url_login}".format(url=self.service,url_login=url_login)
+        full_url = "{url}/basic-auth/{url_login_pass}".format(url=self.service,url_login_pass=url_login_pass)
         logger.info("url = {url} auth = {login}:{password}".format(url=full_url, login=entered_login, password=entered_password))
         response = requests.get(url=full_url, auth=(entered_login, entered_password))
         write_log(response)
@@ -69,6 +73,10 @@ class HttpBinLib:
 
                 *Args:*\n
                 _lines_number_ - кол-во ожидаемых строк\n\n
+
+                *Examples*:\n
+                |  *Action*                 | *Argument*|
+                |  Send stream request      |  5        |
         """
         full_url = "{url}/stream/{lines_number}".format(url=self.service,lines_number=lines_number)
         logger.info("url = {}".format(full_url))
