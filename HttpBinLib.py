@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import requests
-from RequestsLogging import write_log, write_stream_logs
+from RequestsLogger import *
 from robot.api import logger
 
 """
@@ -26,6 +26,7 @@ class HttpBinLib:
         """
         self.service = service_name
 
+    @log_decorator
     def send_get_request(self, headers):
         """
             Получение http-ответа на get запрос с переданными хидерами.\n\n
@@ -43,9 +44,9 @@ class HttpBinLib:
         full_url = "{}/get".format(self.service)
         logger.info("url = {}, headers={}".format(full_url,headers))
         response=requests.get(url=full_url,headers=headers)
-        write_log(response)
         return response
 
+    @log_decorator
     def send_auth_request(self, url_login_pass, entered_login, entered_password):
         """
             Получение http-ответа на auth запрос.\n\n
@@ -63,10 +64,9 @@ class HttpBinLib:
         full_url = "{url}/basic-auth/{url_login_pass}".format(url=self.service,url_login_pass=url_login_pass)
         logger.info("url = {url} auth = {login}:{password}".format(url=full_url, login=entered_login, password=entered_password))
         response = requests.get(url=full_url, auth=(entered_login, entered_password))
-        write_log(response)
         return response
 
-
+    @log_stream_decorator
     def send_stream_request(self, lines_number):
         """
                 Получение http-ответа на stream запрос.\n\n
@@ -81,5 +81,4 @@ class HttpBinLib:
         full_url = "{url}/stream/{lines_number}".format(url=self.service,lines_number=lines_number)
         logger.info("url = {}".format(full_url))
         response = requests.get(url=full_url)
-        write_stream_logs(response)
         return response

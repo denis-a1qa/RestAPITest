@@ -134,6 +134,10 @@ def _log_decorator(func, *args, **kwargs):
     write_log(response)
     return response
 
+def _log_stream_decorator(func, *args, **kwargs):
+    response = func(*args, **kwargs)
+    write_stream_logs(response)
+    return response
 
 def log_decorator(func):
     """
@@ -153,3 +157,22 @@ def log_decorator(func):
 
     func.cache = {}
     return decorator.decorator(_log_decorator, func)
+
+def log_stream_decorator(func):
+    """
+    Decorator for http-requests. Logging request and response.
+    Decorated function must return response object [ http://docs.python-requests.org/en/latest/api/#requests | Response ]
+
+    Example:
+
+    | @RequestsLogger.log_decorator
+    | def get_data(alias, uri)
+    |     response = _request_lib_instance().get_request(alias, uri)
+    |     return response
+
+    Output:
+    Formatted output of request and response in test log
+    """
+
+    func.cache = {}
+    return decorator.decorator(_log_stream_decorator, func)

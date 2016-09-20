@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20160920 06:56:56.304" generator="Robot 3.0 (Python 2.7.12 on win32)">
+<robot generated="20160920 07:14:09.276" generator="Robot 3.0 (Python 2.7.12 on win32)">
 <suite source="C:\Users\Denis.Lukashevich\PycharmProjects\httpbin\httbinTests.robot" id="s1" name="httbinTests">
 <test id="s1-t1" name="Test_Data_For_Basic_Auth">
 <kw type="setup" name="Set Service Name" library="HttpBinLib">
@@ -7,7 +7,7 @@
 <arguments>
 <arg>http://httpbin.org</arg>
 </arguments>
-<status status="PASS" endtime="20160920 06:56:56.491" starttime="20160920 06:56:56.491"></status>
+<status status="PASS" endtime="20160920 07:14:09.463" starttime="20160920 07:14:09.463"></status>
 </kw>
 <kw name="Basic Auth Request Check Creds Test">
 <arguments>
@@ -26,9 +26,9 @@
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20160920 06:56:56.491" level="INFO">url = http://httpbin.org/basic-auth/test/12345 auth = test:12345</msg>
-<msg timestamp="20160920 06:56:56.507" level="INFO">Starting new HTTP connection (1): httpbin.org</msg>
-<msg timestamp="20160920 06:56:56.819" level="INFO">&gt; GET http://httpbin.org/basic-auth/test/12345
+<msg timestamp="20160920 07:14:09.463" level="INFO">url = http://httpbin.org/basic-auth/test/12345 auth = test:12345</msg>
+<msg timestamp="20160920 07:14:09.463" level="INFO">Starting new HTTP connection (1): httpbin.org</msg>
+<msg timestamp="20160920 07:14:09.791" level="INFO">&gt; GET http://httpbin.org/basic-auth/test/12345
 &gt; Connection: keep-alive
 &gt; Authorization: Basic dGVzdDoxMjM0NQ==
 &gt; Accept-Encoding: gzip, deflate
@@ -42,16 +42,16 @@
 &lt; Server: nginx
 &lt; Connection: keep-alive
 &lt; Access-Control-Allow-Credentials: true
-&lt; Date: Tue, 20 Sep 2016 13:56:56 GMT
+&lt; Date: Tue, 20 Sep 2016 14:14:09 GMT
 &lt; Access-Control-Allow-Origin: *
 &lt; Content-Type: application/json
 &lt;</msg>
-<msg timestamp="20160920 06:56:56.819" level="INFO">{
+<msg timestamp="20160920 07:14:09.791" level="INFO">{
     "authenticated": true,
     "user": "test"
 }</msg>
-<msg timestamp="20160920 06:56:56.819" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" endtime="20160920 06:56:56.819" starttime="20160920 06:56:56.491"></status>
+<msg timestamp="20160920 07:14:09.791" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20160920 07:14:09.791" starttime="20160920 07:14:09.463"></status>
 </kw>
 <kw name="Check Status Code" library="RequestsChecker">
 <doc>Проверка кода http-ответа.</doc>
@@ -59,9 +59,9 @@
 <arg>${expected_resp_code}</arg>
 <arg>${response}</arg>
 </arguments>
-<status status="PASS" endtime="20160920 06:56:56.819" starttime="20160920 06:56:56.819"></status>
+<status status="PASS" endtime="20160920 07:14:09.791" starttime="20160920 07:14:09.791"></status>
 </kw>
-<status status="PASS" endtime="20160920 06:56:56.819" starttime="20160920 06:56:56.491"></status>
+<status status="PASS" endtime="20160920 07:14:09.791" starttime="20160920 07:14:09.463"></status>
 </kw>
 <kw name="Basic Auth Request Check Creds Test">
 <arguments>
@@ -80,28 +80,28 @@
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20160920 06:56:56.819" level="INFO">url = http://httpbin.org/basic-auth/test/12345 auth = invalidUser:12345</msg>
-<msg timestamp="20160920 06:56:56.819" level="INFO">Starting new HTTP connection (1): httpbin.org</msg>
-<msg timestamp="20160920 06:56:57.115" level="INFO">&gt; GET http://httpbin.org/basic-auth/test/12345
+<msg timestamp="20160920 07:14:09.791" level="INFO">url = http://httpbin.org/basic-auth/test/12345 auth = invalidUser:12345</msg>
+<msg timestamp="20160920 07:14:09.791" level="INFO">Starting new HTTP connection (1): httpbin.org</msg>
+<msg timestamp="20160920 07:14:10.072" level="INFO">&gt; GET http://httpbin.org/basic-auth/test/12345
 &gt; Connection: keep-alive
 &gt; Authorization: Basic aW52YWxpZFVzZXI6MTIzNDU=
 &gt; Accept-Encoding: gzip, deflate
 &gt; Accept: */*
 &gt; User-Agent: python-requests/2.9.1
 &gt;
-* Elapsed time: 0:00:00.296000
+* Elapsed time: 0:00:00.281000
 &gt;
 &lt; 401 UNAUTHORIZED
 &lt; Content-Length: 0
 &lt; Server: nginx
 &lt; Connection: keep-alive
 &lt; Access-Control-Allow-Credentials: true
-&lt; Date: Tue, 20 Sep 2016 13:56:57 GMT
+&lt; Date: Tue, 20 Sep 2016 14:14:10 GMT
 &lt; Access-Control-Allow-Origin: *
 &lt; WWW-Authenticate: Basic realm="Fake Realm"
 &lt;</msg>
-<msg timestamp="20160920 06:56:57.115" level="INFO">${response} = &lt;Response [401]&gt;</msg>
-<status status="PASS" endtime="20160920 06:56:57.115" starttime="20160920 06:56:56.819"></status>
+<msg timestamp="20160920 07:14:10.087" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<status status="PASS" endtime="20160920 07:14:10.087" starttime="20160920 07:14:09.791"></status>
 </kw>
 <kw name="Check Status Code" library="RequestsChecker">
 <doc>Проверка кода http-ответа.</doc>
@@ -109,9 +109,9 @@
 <arg>${expected_resp_code}</arg>
 <arg>${response}</arg>
 </arguments>
-<status status="PASS" endtime="20160920 06:56:57.115" starttime="20160920 06:56:57.115"></status>
+<status status="PASS" endtime="20160920 07:14:10.087" starttime="20160920 07:14:10.087"></status>
 </kw>
-<status status="PASS" endtime="20160920 06:56:57.115" starttime="20160920 06:56:56.819"></status>
+<status status="PASS" endtime="20160920 07:14:10.087" starttime="20160920 07:14:09.791"></status>
 </kw>
 <kw name="Basic Auth Request Check Creds Test">
 <arguments>
@@ -130,28 +130,28 @@
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20160920 06:56:57.115" level="INFO">url = http://httpbin.org/basic-auth/test/12345 auth = test:InvalidPassword</msg>
-<msg timestamp="20160920 06:56:57.115" level="INFO">Starting new HTTP connection (1): httpbin.org</msg>
-<msg timestamp="20160920 06:56:57.396" level="INFO">&gt; GET http://httpbin.org/basic-auth/test/12345
+<msg timestamp="20160920 07:14:10.087" level="INFO">url = http://httpbin.org/basic-auth/test/12345 auth = test:InvalidPassword</msg>
+<msg timestamp="20160920 07:14:10.087" level="INFO">Starting new HTTP connection (1): httpbin.org</msg>
+<msg timestamp="20160920 07:14:10.384" level="INFO">&gt; GET http://httpbin.org/basic-auth/test/12345
 &gt; Connection: keep-alive
 &gt; Authorization: Basic dGVzdDpJbnZhbGlkUGFzc3dvcmQ=
 &gt; Accept-Encoding: gzip, deflate
 &gt; Accept: */*
 &gt; User-Agent: python-requests/2.9.1
 &gt;
-* Elapsed time: 0:00:00.281000
+* Elapsed time: 0:00:00.297000
 &gt;
 &lt; 401 UNAUTHORIZED
 &lt; Content-Length: 0
 &lt; Server: nginx
 &lt; Connection: keep-alive
 &lt; Access-Control-Allow-Credentials: true
-&lt; Date: Tue, 20 Sep 2016 13:56:57 GMT
+&lt; Date: Tue, 20 Sep 2016 14:14:10 GMT
 &lt; Access-Control-Allow-Origin: *
 &lt; WWW-Authenticate: Basic realm="Fake Realm"
 &lt;</msg>
-<msg timestamp="20160920 06:56:57.396" level="INFO">${response} = &lt;Response [401]&gt;</msg>
-<status status="PASS" endtime="20160920 06:56:57.396" starttime="20160920 06:56:57.115"></status>
+<msg timestamp="20160920 07:14:10.384" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<status status="PASS" endtime="20160920 07:14:10.384" starttime="20160920 07:14:10.087"></status>
 </kw>
 <kw name="Check Status Code" library="RequestsChecker">
 <doc>Проверка кода http-ответа.</doc>
@@ -159,11 +159,11 @@
 <arg>${expected_resp_code}</arg>
 <arg>${response}</arg>
 </arguments>
-<status status="PASS" endtime="20160920 06:56:57.396" starttime="20160920 06:56:57.396"></status>
+<status status="PASS" endtime="20160920 07:14:10.384" starttime="20160920 07:14:10.384"></status>
 </kw>
-<status status="PASS" endtime="20160920 06:56:57.396" starttime="20160920 06:56:57.115"></status>
+<status status="PASS" endtime="20160920 07:14:10.384" starttime="20160920 07:14:10.087"></status>
 </kw>
-<status status="PASS" endtime="20160920 06:56:57.396" critical="yes" starttime="20160920 06:56:56.491"></status>
+<status status="PASS" endtime="20160920 07:14:10.384" critical="yes" starttime="20160920 07:14:09.463"></status>
 </test>
 <test id="s1-t2" name="Get Request Check Headers Test">
 <kw type="setup" name="Set Service Name" library="HttpBinLib">
@@ -171,7 +171,7 @@
 <arguments>
 <arg>http://httpbin.org</arg>
 </arguments>
-<status status="PASS" endtime="20160920 06:56:57.396" starttime="20160920 06:56:57.396"></status>
+<status status="PASS" endtime="20160920 07:14:10.384" starttime="20160920 07:14:10.384"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
@@ -179,8 +179,8 @@
 <arg>${header_key}</arg>
 <arg>Name</arg>
 </arguments>
-<msg timestamp="20160920 06:56:57.412" level="INFO">${header_key} = Name</msg>
-<status status="PASS" endtime="20160920 06:56:57.412" starttime="20160920 06:56:57.412"></status>
+<msg timestamp="20160920 07:14:10.399" level="INFO">${header_key} = Name</msg>
+<status status="PASS" endtime="20160920 07:14:10.399" starttime="20160920 07:14:10.384"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
@@ -188,8 +188,8 @@
 <arg>${header_value}</arg>
 <arg>TestName</arg>
 </arguments>
-<msg timestamp="20160920 06:56:57.412" level="INFO">${header_value} = TestName</msg>
-<status status="PASS" endtime="20160920 06:56:57.412" starttime="20160920 06:56:57.412"></status>
+<msg timestamp="20160920 07:14:10.399" level="INFO">${header_value} = TestName</msg>
+<status status="PASS" endtime="20160920 07:14:10.399" starttime="20160920 07:14:10.399"></status>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <doc>Creates and returns a dictionary based on given items.</doc>
@@ -199,8 +199,8 @@
 <assign>
 <var>${headers}</var>
 </assign>
-<msg timestamp="20160920 06:56:57.412" level="INFO">${headers} = {u'Name': u'TestName'}</msg>
-<status status="PASS" endtime="20160920 06:56:57.412" starttime="20160920 06:56:57.412"></status>
+<msg timestamp="20160920 07:14:10.399" level="INFO">${headers} = {u'Name': u'TestName'}</msg>
+<status status="PASS" endtime="20160920 07:14:10.399" starttime="20160920 07:14:10.399"></status>
 </kw>
 <kw name="Send Get Request" library="HttpBinLib">
 <doc>Получение http-ответа на get запрос с переданными хидерами.</doc>
@@ -210,27 +210,27 @@
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20160920 06:56:57.412" level="INFO">url = http://httpbin.org/get, headers={u'Name': u'TestName'}</msg>
-<msg timestamp="20160920 06:56:57.412" level="INFO">Starting new HTTP connection (1): httpbin.org</msg>
-<msg timestamp="20160920 06:56:57.708" level="INFO">&gt; GET http://httpbin.org/get
+<msg timestamp="20160920 07:14:10.399" level="INFO">url = http://httpbin.org/get, headers={u'Name': u'TestName'}</msg>
+<msg timestamp="20160920 07:14:10.399" level="INFO">Starting new HTTP connection (1): httpbin.org</msg>
+<msg timestamp="20160920 07:14:10.696" level="INFO">&gt; GET http://httpbin.org/get
 &gt; Connection: keep-alive
 &gt; User-Agent: python-requests/2.9.1
 &gt; Name: TestName
 &gt; Accept: */*
 &gt; Accept-Encoding: gzip, deflate
 &gt;
-* Elapsed time: 0:00:00.296000
+* Elapsed time: 0:00:00.297000
 &gt;
 &lt; 200 OK
 &lt; Content-Length: 259
 &lt; Server: nginx
 &lt; Connection: keep-alive
 &lt; Access-Control-Allow-Credentials: true
-&lt; Date: Tue, 20 Sep 2016 13:56:57 GMT
+&lt; Date: Tue, 20 Sep 2016 14:14:10 GMT
 &lt; Access-Control-Allow-Origin: *
 &lt; Content-Type: application/json
 &lt;</msg>
-<msg timestamp="20160920 06:56:57.708" level="INFO">{
+<msg timestamp="20160920 07:14:10.696" level="INFO">{
     "args": {},
     "headers": {
         "Accept": "*/*",
@@ -242,8 +242,8 @@
     "origin": "91.210.4.1",
     "url": "http://httpbin.org/get"
 }</msg>
-<msg timestamp="20160920 06:56:57.708" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" endtime="20160920 06:56:57.708" starttime="20160920 06:56:57.412"></status>
+<msg timestamp="20160920 07:14:10.696" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20160920 07:14:10.696" starttime="20160920 07:14:10.399"></status>
 </kw>
 <kw name="Check Status Code" library="RequestsChecker">
 <doc>Проверка кода http-ответа.</doc>
@@ -251,7 +251,7 @@
 <arg>200</arg>
 <arg>${response}</arg>
 </arguments>
-<status status="PASS" endtime="20160920 06:56:57.708" starttime="20160920 06:56:57.708"></status>
+<status status="PASS" endtime="20160920 07:14:10.696" starttime="20160920 07:14:10.696"></status>
 </kw>
 <kw name="Dictionary Should Contain Item" library="Collections">
 <doc>An item of ``key``/``value`` must be found in a `dictionary`.</doc>
@@ -260,9 +260,9 @@
 <arg>${header_key}</arg>
 <arg>${header_value}</arg>
 </arguments>
-<status status="PASS" endtime="20160920 06:56:57.708" starttime="20160920 06:56:57.708"></status>
+<status status="PASS" endtime="20160920 07:14:10.696" starttime="20160920 07:14:10.696"></status>
 </kw>
-<status status="PASS" endtime="20160920 06:56:57.708" critical="yes" starttime="20160920 06:56:57.396"></status>
+<status status="PASS" endtime="20160920 07:14:10.696" critical="yes" starttime="20160920 07:14:10.384"></status>
 </test>
 <test id="s1-t3" name="Stream Request Check Lines Number Test">
 <kw type="setup" name="Set Service Name" library="HttpBinLib">
@@ -270,7 +270,7 @@
 <arguments>
 <arg>http://httpbin.org</arg>
 </arguments>
-<status status="PASS" endtime="20160920 06:56:57.708" starttime="20160920 06:56:57.708"></status>
+<status status="PASS" endtime="20160920 07:14:10.696" starttime="20160920 07:14:10.696"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
@@ -278,8 +278,8 @@
 <arg>${lines_number}</arg>
 <arg>5</arg>
 </arguments>
-<msg timestamp="20160920 06:56:57.708" level="INFO">${lines_number} = 5</msg>
-<status status="PASS" endtime="20160920 06:56:57.708" starttime="20160920 06:56:57.708"></status>
+<msg timestamp="20160920 07:14:10.712" level="INFO">${lines_number} = 5</msg>
+<status status="PASS" endtime="20160920 07:14:10.712" starttime="20160920 07:14:10.712"></status>
 </kw>
 <kw name="Send Stream Request" library="HttpBinLib">
 <doc>Получение http-ответа на stream запрос.</doc>
@@ -289,26 +289,26 @@
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20160920 06:56:57.708" level="INFO">url = http://httpbin.org/stream/5</msg>
-<msg timestamp="20160920 06:56:57.708" level="INFO">Starting new HTTP connection (1): httpbin.org</msg>
-<msg timestamp="20160920 06:56:58.005" level="INFO">&gt; GET http://httpbin.org/stream/5
+<msg timestamp="20160920 07:14:10.712" level="INFO">url = http://httpbin.org/stream/5</msg>
+<msg timestamp="20160920 07:14:10.712" level="INFO">Starting new HTTP connection (1): httpbin.org</msg>
+<msg timestamp="20160920 07:14:11.008" level="INFO">&gt; GET http://httpbin.org/stream/5
 &gt; Connection: keep-alive
 &gt; Accept-Encoding: gzip, deflate
 &gt; Accept: */*
 &gt; User-Agent: python-requests/2.9.1
 &gt;
-* Elapsed time: 0:00:00.297000
+* Elapsed time: 0:00:00.296000
 &gt;
 &lt; 200 OK
 &lt; Transfer-Encoding: chunked
 &lt; Server: nginx
 &lt; Connection: keep-alive
 &lt; Access-Control-Allow-Credentials: true
-&lt; Date: Tue, 20 Sep 2016 13:56:57 GMT
+&lt; Date: Tue, 20 Sep 2016 14:14:10 GMT
 &lt; Access-Control-Allow-Origin: *
 &lt; Content-Type: application/json
 &lt;</msg>
-<msg timestamp="20160920 06:56:58.005" level="INFO">{
+<msg timestamp="20160920 07:14:11.008" level="INFO">{
     "args": {},
     "headers": {
         "Accept": "*/*",
@@ -364,8 +364,8 @@
     "origin": "91.210.4.1",
     "url": "http://httpbin.org/stream/5"
 }</msg>
-<msg timestamp="20160920 06:56:58.005" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" endtime="20160920 06:56:58.005" starttime="20160920 06:56:57.708"></status>
+<msg timestamp="20160920 07:14:11.008" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20160920 07:14:11.008" starttime="20160920 07:14:10.712"></status>
 </kw>
 <kw name="Check Status Code" library="RequestsChecker">
 <doc>Проверка кода http-ответа.</doc>
@@ -373,7 +373,7 @@
 <arg>200</arg>
 <arg>${response}</arg>
 </arguments>
-<status status="PASS" endtime="20160920 06:56:58.005" starttime="20160920 06:56:58.005"></status>
+<status status="PASS" endtime="20160920 07:14:11.008" starttime="20160920 07:14:11.008"></status>
 </kw>
 <kw name="Get Line Count" library="String">
 <doc>Returns and logs the number of lines in the given string.</doc>
@@ -383,9 +383,9 @@
 <assign>
 <var>${actual_lines_number}</var>
 </assign>
-<msg timestamp="20160920 06:56:58.020" level="INFO">5 lines</msg>
-<msg timestamp="20160920 06:56:58.020" level="INFO">${actual_lines_number} = 5</msg>
-<status status="PASS" endtime="20160920 06:56:58.020" starttime="20160920 06:56:58.005"></status>
+<msg timestamp="20160920 07:14:11.024" level="INFO">5 lines</msg>
+<msg timestamp="20160920 07:14:11.039" level="INFO">${actual_lines_number} = 5</msg>
+<status status="PASS" endtime="20160920 07:14:11.039" starttime="20160920 07:14:11.008"></status>
 </kw>
 <kw name="Should Be Equal As Integers" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to integers.</doc>
@@ -394,16 +394,16 @@
 <arg>${actual_lines_number}</arg>
 <arg>msg=Incorrect number of lines</arg>
 </arguments>
-<msg timestamp="20160920 06:56:58.036" level="INFO">Argument types are:
+<msg timestamp="20160920 07:14:11.039" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'int'&gt;</msg>
-<status status="PASS" endtime="20160920 06:56:58.036" starttime="20160920 06:56:58.020"></status>
+<status status="PASS" endtime="20160920 07:14:11.039" starttime="20160920 07:14:11.039"></status>
 </kw>
-<status status="PASS" endtime="20160920 06:56:58.036" critical="yes" starttime="20160920 06:56:57.708"></status>
+<status status="PASS" endtime="20160920 07:14:11.039" critical="yes" starttime="20160920 07:14:10.696"></status>
 </test>
 <doc>Проверка demo REST сервиса http://httpbin.org/
 [https://jira.billing.ru/browse/PQAGAUTO-1752 | PQAGAUTO-1752]</doc>
-<status status="PASS" endtime="20160920 06:56:58.036" starttime="20160920 06:56:56.304"></status>
+<status status="PASS" endtime="20160920 07:14:11.039" starttime="20160920 07:14:09.276"></status>
 </suite>
 <statistics>
 <total>
@@ -417,5 +417,21 @@
 </suite>
 </statistics>
 <errors>
+<msg timestamp="20160920 07:14:09.323" level="ERROR">Error in file 'C:\Users\Denis.Lukashevich\PycharmProjects\httpbin\httbinTests.robot': Importing test library 'RequestsLogging' failed: ImportError: No module named RequestsLogging
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\Denis.Lukashevich\PycharmProjects\ps_rf\library
+  C:\Users\Denis.Lukashevich\PycharmProjects\ps_rf\listener
+  C:\Users\Denis.Lukashevich\PycharmProjects\ps_rf\resource
+  C:\Users\Denis.Lukashevich\PycharmProjects\ps_rf\test\library
+  C:\Users\Denis.Lukashevich\PycharmProjects\httpbin\library
+  C:\Python27\python27.zip
+  C:\Python27\DLLs
+  C:\Python27\lib
+  C:\Python27\lib\plat-win
+  C:\Python27\lib\lib-tk
+  C:\Python27
+  C:\Python27\lib\site-packages</msg>
 </errors>
 </robot>
