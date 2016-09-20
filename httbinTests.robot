@@ -40,7 +40,6 @@ Stream Request Check Lines Number Test
     Check Status Code  200  ${response}
     ${actual_lines_number}=  String.Get Line Count  ${response.text}
     Should be equal as integers  ${lines_number}  ${actual_lines_number}  msg=Incorrect number of lines
-    RequestsLogging.Write Stream Logs  ${response}
 
 
 
