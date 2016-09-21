@@ -8,8 +8,6 @@ Library for sending different type of requests tp specified service.
 """
 
 class HttpBinLib:
-    service = 'http://httpbin.org'
-
     def __init__(self):
         self.service = 'http://httpbin.org'
 

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
+from robot.api import logger
 import json
 from xml.dom import minidom
 import decorator
 import re
-from robot.api import logger
 
 """
 Library for logging request and response, which based on [ http://docs.python-requests.org/en/latest| requests ]  library.
@@ -26,39 +26,15 @@ def write_stream_logs(response):
     |              | ${response}=                      | RequestsLibrary.Get request       | Alias         | /           |
     |              | RequestsLogger.Write stream logs          | ${response}           |                           |             |
     """
+    write_log(response, is_stream=True)
 
-    msg = request_log(response)
-    # тело ответа
-    converted_string = ''
-    if response.content:
-        # получение кодировки входящего сообщения
-        response_content_type = response.headers.get('content-type')
-        if 'application/json' in response_content_type:
-            for line in response.iter_lines():
-                if(line):
-                    jsonString = json.loads(line)
-                    jsonString = json.dumps(jsonString, sort_keys=True,
-                                        ensure_ascii=False, indent=4,
-                                       separators=(',', ': '))
-                    converted_string+=jsonString
-        elif 'application/xml' in response_content_type:
-            response_content = get_decoded_response_body(response.content, response_content_type)
-            xml = minidom.parseString(response_content)
-            converted_string = xml.toprettyxml()
-        else:
-            response_content = get_decoded_response_body(response.content, response_content_type)
-            msg.append(response_content)
-    # вывод сообщения в лог
-    logger.info('\n'.join(msg))
-    if converted_string:
-        logger.info(converted_string)
-
-def write_log(response):
+def write_log(response,  is_stream=False):
     """
     Logging of http-request and response
 
     *Args:*\n
     _response_ - object [ http://docs.python-requests.org/en/latest/api/#requests.Response | "Response" ]
+    _isStream_ -
 
     *Response:*\n
     Formatted output of request and response in test log
@@ -78,10 +54,18 @@ def write_log(response):
         response_content_type = response.headers.get('content-type')
         if 'application/json' in response_content_type:
             response_content = get_decoded_response_body(response.content, response_content_type)
-            jsonString = json.loads(response_content)
-            jsonString = json.dumps(jsonString, sort_keys=True,
-                                        ensure_ascii=False, indent=4,
-                                       separators=(',', ': '))
+            if is_stream:
+                for line in response.iter_lines():
+                    jsonString = json.loads(line)
+                    jsonString = json.dumps(jsonString, sort_keys=True,
+                                            ensure_ascii=False, indent=4,
+                                            separators=(',', ': '))
+                    converted_string += jsonString
+            else:
+                jsonString = json.loads(response_content)
+                jsonString = json.dumps(jsonString, sort_keys=True,
+                                            ensure_ascii=False, indent=4,
+                                        separators=(',', ': '))
             converted_string=jsonString
         elif 'application/xml' in response_content_type:
             response_content = get_decoded_response_body(response.content, response_content_type)
@@ -134,10 +118,12 @@ def _log_decorator(func, *args, **kwargs):
     write_log(response)
     return response
 
-def _log_stream_decorator(func, *args, **kwargs):
+
+def _log_decorator_stream(func, *args, **kwargs):
     response = func(*args, **kwargs)
     write_stream_logs(response)
     return response
+
 
 def log_decorator(func):
     """
@@ -154,25 +140,10 @@ def log_decorator(func):
     Output:
     Formatted output of request and response in test log
     """
-
     func.cache = {}
     return decorator.decorator(_log_decorator, func)
 
+
 def log_stream_decorator(func):
-    """
-    Decorator for http-requests. Logging request and response.
-    Decorated function must return response object [ http://docs.python-requests.org/en/latest/api/#requests | Response ]
-
-    Example:
-
-    | @RequestsLogger.log_decorator
-    | def get_data(alias, uri)
-    |     response = _request_lib_instance().get_request(alias, uri)
-    |     return response
-
-    Output:
-    Formatted output of request and response in test log
-    """
-
     func.cache = {}
-    return decorator.decorator(_log_stream_decorator, func)
+    return decorator.decorator(_log_decorator_stream, func)

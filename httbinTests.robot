@@ -4,7 +4,7 @@ Documentation    Проверка demo REST сервиса http://httpbin.org/
 
 Library  String
 Library  RequestsChecker
-Library  RequestsLogging
+Library  RequestsLogger
 Library  HttpBinLib
 Library  Collections
 
